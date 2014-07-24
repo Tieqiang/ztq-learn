@@ -1,0 +1,4 @@
+rootProject.name = 'WebStart'
+
+include 'Annotation'
+

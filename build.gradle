@@ -1,0 +1,61 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'fatjar'
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+repositories {
+    maven {
+        url: "http://localhost:8081/nexus/content/groups/public/"
+    }
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        mavenLocal();
+        maven{
+            url 'http://132.147.68.178:8081/nexus/content/groups/public/'
+        }
+        maven{
+            url 'http://132.147.68.178:8081/nexus/content/repositories/heren-snapshots'
+        }
+        mavenCentral();
+    }
+    dependencies {
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.2-rc1'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Vendor': 'HEREN/Beijing',
+                'Implementation-Vendor-Id': 'heren',
+                'Built-On': new Date()
+    }
+}
+
+fatJar {
+    manifest {
+        attributes 'Implementation-Title': 'heren-plugin-meddoc',
+                'Implementation-Vendor': 'Beijing/heren',
+                'Implementation-Vendor-Id': 'heren.beijing',
+                'Specification-Title': 'heren',
+                'Specification-Vendor': 'The Heren Software',
+                'Built-On': new Date()
+    }
+
+    exclude "about_files/*"
+    exclude "about.html"
+    exclude "plugin.properties"
+    exclude "jetty-dir.css"
+    exclude "META-INF/ECLIPSEF.*"
+    exclude "com/heren/his/commons/*"
+
+}

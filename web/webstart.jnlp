@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://localhost:8080/webstart/" href="webstart.jnlp">
+    <information>
+        <title>JavaWebStart</title>
+        <vendor>JavaWebStart project</vendor>
+        <homepage href="index.html" />
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <resources>
+        <j2se version="1.7+" />
+        <jar href="/webstart/jars/WebStart-1.0.jar" />
+    </resources>
+    <application-desc main-class="com.ztq.webstart.MyWebStart" />
+</jnlp>
